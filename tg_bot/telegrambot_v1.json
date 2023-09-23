@@ -1,0 +1,1652 @@
+[
+    {
+        "id": "8d2b0c4561bd5dca",
+        "type": "tab",
+        "label": "telegram-kvotch",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f56d93e1eda7c075",
+        "type": "telegrambot-command",
+        "z": "8d2b0c4561bd5dca",
+        "d": true,
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "command": "/help",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "3f826bde66015fe2"
+            ]
+        ]
+    },
+    {
+        "id": "98826363df85d3f5",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "d": true,
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "228",
+        "parseMode": "",
+        "x": 820,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f387cf4ff2df6c69",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "d": true,
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "1337",
+        "parseMode": "",
+        "x": 820,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3f826bde66015fe2",
+        "type": "function",
+        "z": "8d2b0c4561bd5dca",
+        "d": true,
+        "name": "",
+        "func": "var id = msg.telegram.from.id;\nmsg.payload = id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "3c190fa1c5b682dd"
+            ]
+        ]
+    },
+    {
+        "id": "3c190fa1c5b682dd",
+        "type": "switch",
+        "z": "8d2b0c4561bd5dca",
+        "d": true,
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "751629275",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "672140368",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "98826363df85d3f5"
+            ],
+            [
+                "f387cf4ff2df6c69"
+            ]
+        ]
+    },
+    {
+        "id": "19b8219f87e2c36d",
+        "type": "comment",
+        "z": "8d2b0c4561bd5dca",
+        "name": "вивід окремому отримувачу",
+        "info": "",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "43890ce52f20d68a",
+        "type": "telegrambot-command",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "command": "/temp",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "aa2d3d71903a56c4"
+            ]
+        ]
+    },
+    {
+        "id": "aa2d3d71903a56c4",
+        "type": "function",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "func": "var id = msg.telegram.from.id;\nmsg.payload = id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "841214afd4bb8277"
+            ]
+        ]
+    },
+    {
+        "id": "841214afd4bb8277",
+        "type": "switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "751629275",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "672140368",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1454286480",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 530,
+        "y": 360,
+        "wires": [
+            [
+                "8e8786c5c2831ab4"
+            ],
+            [
+                "eab17d682cdd25d1"
+            ],
+            [
+                "7f16d6202b70960c"
+            ]
+        ]
+    },
+    {
+        "id": "8e8786c5c2831ab4",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "Температура",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 700,
+        "y": 320,
+        "wires": [
+            [
+                "1381c9a6f6c0ab4a"
+            ],
+            [
+                "e90339e53d8461c3"
+            ]
+        ]
+    },
+    {
+        "id": "e90339e53d8461c3",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Температура в будинку: 30 градусів",
+        "output": "str",
+        "x": 880,
+        "y": 360,
+        "wires": [
+            [
+                "5c7b96718cbdac4c"
+            ]
+        ]
+    },
+    {
+        "id": "5c7b96718cbdac4c",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "",
+        "parseMode": "",
+        "x": 1120,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1381c9a6f6c0ab4a",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "Налаштування ",
+        "answers": [
+            "15",
+            "20",
+            "25"
+        ],
+        "outputs": 3,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 940,
+        "y": 280,
+        "wires": [
+            [
+                "0360c4781299a1c1"
+            ],
+            [
+                "539ddac353d4aa93"
+            ],
+            [
+                "cba8eaa151b06edb"
+            ]
+        ]
+    },
+    {
+        "id": "0360c4781299a1c1",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Температура в будинку = 15",
+        "parseMode": "",
+        "x": 1200,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "539ddac353d4aa93",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Температура в будинку = 20",
+        "parseMode": "",
+        "x": 1200,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cba8eaa151b06edb",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Температура в будинку = 25",
+        "parseMode": "",
+        "x": 1200,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "78c7f59c6733eca8",
+        "type": "comment",
+        "z": "8d2b0c4561bd5dca",
+        "name": "температура",
+        "info": "",
+        "x": 330,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ea63471cdcb56763",
+        "type": "comment",
+        "z": "8d2b0c4561bd5dca",
+        "name": "світло",
+        "info": "",
+        "x": 350,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "d1f2cc3038389868",
+        "type": "comment",
+        "z": "8d2b0c4561bd5dca",
+        "name": "сігналізація",
+        "info": "",
+        "x": 340,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "f77ce583a4ea81e3",
+        "type": "telegrambot-command",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "command": "/light",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 210,
+        "y": 820,
+        "wires": [
+            [
+                "aa2db27488ab7980"
+            ]
+        ]
+    },
+    {
+        "id": "aa2db27488ab7980",
+        "type": "function",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "func": "var id = msg.telegram.from.id;\nmsg.payload = id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 820,
+        "wires": [
+            [
+                "031400691f2a4c96"
+            ]
+        ]
+    },
+    {
+        "id": "031400691f2a4c96",
+        "type": "switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "751629275",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "672140368",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1454286480",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 550,
+        "y": 820,
+        "wires": [
+            [
+                "a22648f5bdcb269e"
+            ],
+            [
+                "950c69054cb36eda"
+            ],
+            [
+                "3bd308d958dd5925"
+            ]
+        ]
+    },
+    {
+        "id": "e786345d0d5670fd",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Світло в будинку увімкнено\nСвітло на вулиці відключено",
+        "output": "str",
+        "x": 900,
+        "y": 820,
+        "wires": [
+            [
+                "22a0d6aa595a03c6"
+            ]
+        ]
+    },
+    {
+        "id": "22a0d6aa595a03c6",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "",
+        "parseMode": "",
+        "x": 1100,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "a22648f5bdcb269e",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "Світло",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 720,
+        "y": 780,
+        "wires": [
+            [
+                "2421f1a47fa01cb0"
+            ],
+            [
+                "e786345d0d5670fd"
+            ]
+        ]
+    },
+    {
+        "id": "2421f1a47fa01cb0",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "settings ",
+        "answers": [
+            "Вкл. на вулиці",
+            "Вкл. в будинку",
+            "Викл. на вулиці",
+            "Викл. в будинку"
+        ],
+        "outputs": 4,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 960,
+        "y": 740,
+        "wires": [
+            [
+                "7717fecfbedf2b30"
+            ],
+            [
+                "ca0cbe5e6989a0a7"
+            ],
+            [
+                "4e65e4a69661d6b6"
+            ],
+            [
+                "43bcacae5c71f095"
+            ]
+        ]
+    },
+    {
+        "id": "7717fecfbedf2b30",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Світло на вулиці увімкнено",
+        "parseMode": "",
+        "x": 1220,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ca0cbe5e6989a0a7",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Світло в будинку увімкнено",
+        "parseMode": "",
+        "x": 1220,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "daf6cc0b95995e33",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Світло в будинку увімкнено\nСвітло на вулиці відключено",
+        "output": "str",
+        "x": 900,
+        "y": 940,
+        "wires": [
+            [
+                "ec5660822c3c666d"
+            ]
+        ]
+    },
+    {
+        "id": "ec5660822c3c666d",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "",
+        "parseMode": "",
+        "x": 1100,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "950c69054cb36eda",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "light",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 740,
+        "y": 880,
+        "wires": [
+            [
+                "f72ce29bc3ea46c6"
+            ],
+            [
+                "daf6cc0b95995e33"
+            ]
+        ]
+    },
+    {
+        "id": "f72ce29bc3ea46c6",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "settings ",
+        "answers": [
+            "Вкл. на вулиці",
+            "Вкл. в будинку",
+            "Викл. на вулиці",
+            "Викл. в будинку"
+        ],
+        "outputs": 4,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 940,
+        "y": 880,
+        "wires": [
+            [
+                "442c0ac81fa31c6d"
+            ],
+            [
+                "d9d54d93dd79210e"
+            ],
+            [
+                "a352b76e6a52b862"
+            ],
+            [
+                "cf6305481893ac1b"
+            ]
+        ]
+    },
+    {
+        "id": "442c0ac81fa31c6d",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Світло на вулиці увімкнено",
+        "parseMode": "",
+        "x": 1340,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "d9d54d93dd79210e",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Світло в будинку увімкнено",
+        "parseMode": "",
+        "x": 1360,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "0f1ee33ebac58059",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Світло в будинку увімкнено\nСвітло на вулиці відключено",
+        "output": "str",
+        "x": 880,
+        "y": 1060,
+        "wires": [
+            [
+                "32b71ceb6d76315c"
+            ]
+        ]
+    },
+    {
+        "id": "32b71ceb6d76315c",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "",
+        "parseMode": "",
+        "x": 1060,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "3bd308d958dd5925",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "light",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 720,
+        "y": 1000,
+        "wires": [
+            [
+                "d22c9c3befda82cb"
+            ],
+            [
+                "0f1ee33ebac58059"
+            ]
+        ]
+    },
+    {
+        "id": "d22c9c3befda82cb",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "Налаштування",
+        "answers": [
+            "Вкл. на вулиці",
+            "Вкл. в будинку",
+            "Викл. на вулиці",
+            "Викл. в будинку"
+        ],
+        "outputs": 4,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 960,
+        "y": 1000,
+        "wires": [
+            [
+                "fdde195035059bef"
+            ],
+            [
+                "118d295c82a0bf16"
+            ],
+            [
+                "a9d4cd3f74299f7c"
+            ],
+            [
+                "c062129e886a680c"
+            ]
+        ]
+    },
+    {
+        "id": "fdde195035059bef",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Світло на вулиці увімкнено",
+        "parseMode": "",
+        "x": 1220,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "118d295c82a0bf16",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Світло в будинку увімкнено",
+        "parseMode": "",
+        "x": 1220,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "eab17d682cdd25d1",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "Температура",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 700,
+        "y": 380,
+        "wires": [
+            [
+                "d0c565050d2589a4"
+            ],
+            [
+                "b1c47830843113da"
+            ]
+        ]
+    },
+    {
+        "id": "b1c47830843113da",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Температура в будинку: 30 градусів",
+        "output": "str",
+        "x": 900,
+        "y": 480,
+        "wires": [
+            [
+                "728bd3450b45fdef"
+            ]
+        ]
+    },
+    {
+        "id": "728bd3450b45fdef",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "",
+        "parseMode": "",
+        "x": 1080,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d0c565050d2589a4",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "Налаштування",
+        "answers": [
+            "15",
+            "20",
+            "25"
+        ],
+        "outputs": 3,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 940,
+        "y": 420,
+        "wires": [
+            [
+                "2595663919a6b6f9"
+            ],
+            [
+                "cbca110a6f124710"
+            ],
+            [
+                "8cd369997a869c0a"
+            ]
+        ]
+    },
+    {
+        "id": "cbca110a6f124710",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Температура в будинку = 20",
+        "parseMode": "",
+        "x": 1220,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "8cd369997a869c0a",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Температура в будинку = 25",
+        "parseMode": "",
+        "x": 1220,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2595663919a6b6f9",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Температура в будинку  = 15",
+        "parseMode": "",
+        "x": 1220,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7f16d6202b70960c",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "Температура",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 700,
+        "y": 440,
+        "wires": [
+            [
+                "f4a5534b8596cb3a"
+            ],
+            [
+                "8c1f4075f2640ac0"
+            ]
+        ]
+    },
+    {
+        "id": "8c1f4075f2640ac0",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Температура в будинку: 30 градусів",
+        "output": "str",
+        "x": 860,
+        "y": 620,
+        "wires": [
+            [
+                "3c67ecd4e7f48dec"
+            ]
+        ]
+    },
+    {
+        "id": "3c67ecd4e7f48dec",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "",
+        "parseMode": "",
+        "x": 1040,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "f4a5534b8596cb3a",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "Налаштування",
+        "answers": [
+            "15",
+            "20",
+            "25"
+        ],
+        "outputs": 3,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 920,
+        "y": 560,
+        "wires": [
+            [
+                "0d1bb9e398ba9722"
+            ],
+            [
+                "1765d62b377e57f6"
+            ],
+            [
+                "462f406e34d5e505"
+            ]
+        ]
+    },
+    {
+        "id": "1765d62b377e57f6",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Температура в будинку = 20",
+        "parseMode": "",
+        "x": 1220,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "462f406e34d5e505",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Температура в будинку = 25",
+        "parseMode": "",
+        "x": 1220,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "0d1bb9e398ba9722",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Температура в будинку  = 15",
+        "parseMode": "",
+        "x": 1220,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "923780abdaeb2d76",
+        "type": "telegrambot-command",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "command": "/signal",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 210,
+        "y": 1200,
+        "wires": [
+            [
+                "cb633589139a5787"
+            ]
+        ]
+    },
+    {
+        "id": "cb633589139a5787",
+        "type": "function",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "func": "var id = msg.telegram.from.id;\nmsg.payload = id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1200,
+        "wires": [
+            [
+                "3c0408422bad3378"
+            ]
+        ]
+    },
+    {
+        "id": "3c0408422bad3378",
+        "type": "switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "751629275",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "672140368",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1454286480",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 550,
+        "y": 1200,
+        "wires": [
+            [
+                "daf14526ad7bebf8"
+            ],
+            [
+                "df84fd23c7962a21"
+            ],
+            [
+                "781a11e7787887d4"
+            ]
+        ]
+    },
+    {
+        "id": "daf14526ad7bebf8",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "Сигналізація",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 760,
+        "y": 1180,
+        "wires": [
+            [
+                "d45fe7b9d1a00168"
+            ],
+            [
+                "94b95fc7661c4010"
+            ]
+        ]
+    },
+    {
+        "id": "94b95fc7661c4010",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Сигналізація умівкнена\n",
+        "output": "str",
+        "x": 940,
+        "y": 1220,
+        "wires": [
+            [
+                "45e5d0e4ce02d5b9"
+            ]
+        ]
+    },
+    {
+        "id": "d45fe7b9d1a00168",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "question": "Налаштування",
+        "answers": [
+            "Включити",
+            "Виключити"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 1000,
+        "y": 1140,
+        "wires": [
+            [
+                "99b2a6f32757e540",
+                "107d47d6acdffa51"
+            ],
+            [
+                "807b33042f81d5ca",
+                "6201c444bfa189cf"
+            ]
+        ]
+    },
+    {
+        "id": "45e5d0e4ce02d5b9",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "",
+        "parseMode": "",
+        "x": 1160,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "807b33042f81d5ca",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Сигналізація вимкнена",
+        "parseMode": "",
+        "x": 1240,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "99b2a6f32757e540",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Сигналізація увімкнена",
+        "parseMode": "",
+        "x": 1240,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "107d47d6acdffa51",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480,672140368",
+        "message": "Дмитро увімкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1420,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "6201c444bfa189cf",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480,672140368",
+        "message": "Дмитро вимкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1420,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "df84fd23c7962a21",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "Сигналізація",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 780,
+        "y": 1320,
+        "wires": [
+            [
+                "7df3ca4bc9efc140"
+            ],
+            [
+                "fe7c800d44d8e35c"
+            ]
+        ]
+    },
+    {
+        "id": "fe7c800d44d8e35c",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Сигналізація умівкнена\n",
+        "output": "str",
+        "x": 960,
+        "y": 1360,
+        "wires": [
+            [
+                "0f95e37d84e88509"
+            ]
+        ]
+    },
+    {
+        "id": "0f95e37d84e88509",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "",
+        "parseMode": "",
+        "x": 1180,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "6a5c3ae77e5a63d5",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Сигналізація вимкнена",
+        "parseMode": "",
+        "x": 1260,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "9514f7b62beb01fd",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275,1454286480",
+        "message": "Данило вимкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1440,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "7df3ca4bc9efc140",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "question": "Налаштування",
+        "answers": [
+            "Включити",
+            "Виключити"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 1020,
+        "y": 1280,
+        "wires": [
+            [
+                "5911676fcca4bcd5",
+                "94dff1dca94a3402"
+            ],
+            [
+                "6a5c3ae77e5a63d5",
+                "9514f7b62beb01fd"
+            ]
+        ]
+    },
+    {
+        "id": "5911676fcca4bcd5",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Сигналізація увімкнена",
+        "parseMode": "",
+        "x": 1260,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "94dff1dca94a3402",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275,1454286480",
+        "message": "Данило увімкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1440,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "781a11e7787887d4",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "Сигналізація",
+        "answers": [
+            "settings",
+            "info"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 760,
+        "y": 1460,
+        "wires": [
+            [
+                "9b43b9282b7f1815"
+            ],
+            [
+                "868adc4cc5d4629e"
+            ]
+        ]
+    },
+    {
+        "id": "868adc4cc5d4629e",
+        "type": "template",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "Сигналізація умівкнена\n",
+        "output": "str",
+        "x": 940,
+        "y": 1500,
+        "wires": [
+            [
+                "16f55c069dc1d86b"
+            ]
+        ]
+    },
+    {
+        "id": "16f55c069dc1d86b",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "",
+        "parseMode": "",
+        "x": 1160,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "816dd9bb3d0ed7c7",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Сигналізація вимкнена",
+        "parseMode": "",
+        "x": 1240,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "f02311480784435f",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275,672140368",
+        "message": "Станіслав вимкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1420,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "9b43b9282b7f1815",
+        "type": "telegrambot-switch",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "question": "Налаштування",
+        "answers": [
+            "Включити",
+            "Виключити"
+        ],
+        "outputs": 2,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 1000,
+        "y": 1420,
+        "wires": [
+            [
+                "3d8742ec98570a78",
+                "8ac3e32775bea839"
+            ],
+            [
+                "816dd9bb3d0ed7c7",
+                "f02311480784435f"
+            ]
+        ]
+    },
+    {
+        "id": "3d8742ec98570a78",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Сигналізація увімкнена",
+        "parseMode": "",
+        "x": 1240,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "8ac3e32775bea839",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275,672140368",
+        "message": "Станіслав увімкнув сигналізацію в будинку",
+        "parseMode": "",
+        "x": 1420,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "4e65e4a69661d6b6",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Світло на вулиці вимкнено",
+        "parseMode": "",
+        "x": 1260,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "43bcacae5c71f095",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "751629275",
+        "message": "Світло в будинку вимкнено",
+        "parseMode": "",
+        "x": 1260,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "a352b76e6a52b862",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Світло на вулиці вимкнено",
+        "parseMode": "",
+        "x": 1400,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "cf6305481893ac1b",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "672140368",
+        "message": "Світло в будинку вимкнено",
+        "parseMode": "",
+        "x": 1400,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c062129e886a680c",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Світло в будинку вимкнено",
+        "parseMode": "",
+        "x": 1360,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "a9d4cd3f74299f7c",
+        "type": "telegrambot-notify",
+        "z": "8d2b0c4561bd5dca",
+        "name": "",
+        "bot": "21e3388ed7ef2397",
+        "chatId": "1454286480",
+        "message": "Світло на вулиці вимкнено",
+        "parseMode": "",
+        "x": 1400,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "21e3388ed7ef2397",
+        "type": "telegrambot-config",
+        "botname": "bot",
+        "usernames": "",
+        "chatIds": "751629275,672140368,1454286480",
+        "pollInterval": "300"
+    }
+]
